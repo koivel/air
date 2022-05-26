@@ -1,0 +1,36 @@
+openapi: 3.0.1
+info:
+  title: event-api
+  version: 1.0.0
+servers:
+  - url: /dashboard-api
+paths:
+  /dashboard/{id}:
+    get:
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Id of the dashboard to fetch.
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: './models/models.yml#/KDashboard'
+  /dashboards:
+    get:
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './models/models.yml#/KDashboard'
+components:
+  schemas: {}

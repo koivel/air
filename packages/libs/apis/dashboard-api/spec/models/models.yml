@@ -1,0 +1,58 @@
+KDashboard:
+  type: object
+  required:
+    - displayName
+    - scope
+  properties:
+    _id:
+      type: string
+    displayName:
+      type: string
+      example: Runescape XP Gains
+    scope:
+      type: string
+      enum: [Accounts, Global]
+    searches:
+      type: array
+      items:
+        $ref: '../../../event-api/spec/models/event-search-models.yml#/KEventSearch'
+    perms:
+      type: array
+      items:
+        type: string
+    cards:
+      type: array
+      items:
+        $ref: '#/KDashboardCard'
+
+KDashboardCard:
+  type: object
+  required:
+    - title
+    - type
+  properties:
+    title:
+      type: string
+    type:
+      type: string
+      enum: [hchart-stock, hchart-pie]
+    series:
+      $ref: '#/KDashboardSeries'
+    options:
+      type: object
+      additionalProperties: {}
+
+KDashboardSeries:
+  type: object
+  required:
+    - keySelector
+    - dataSelector
+  properties:
+    keySelector:
+      type: string
+    dataSelector:
+      type: array
+      items:
+        type: string
+    nameIndex:
+      type: number

@@ -1,0 +1,152 @@
+KEventSearchFilter:
+  type: object
+  required:
+    - type
+  properties:
+    type:
+      type: string
+      enum: [Equals, Range, In]
+    options:
+      type: object
+      additionalProperties: {}
+
+KEventAccountSearch:
+  type: object
+  properties:
+    collectionId:
+      type: string
+    userId:
+      type: string
+      nullable: true
+
+KEventAccountSearchResult:
+  type: object
+  properties:
+    accountId:
+      type: string
+    displayName:
+      type: string
+
+KEventSearchAgg:
+  type: object
+  required:
+    - type
+  properties:
+    type:
+      type: string
+      enum:
+        [
+          GroupByTags,
+          MixMaxTimeseries,
+          MinMax,
+          'Last',
+          'Timeseries',
+          'TimeseriesLast',
+          'TopHits',
+          'Sum'
+        ]
+    options:
+      type: object
+      additionalProperties: {}
+    aggs:
+      type: object
+      additionalProperties:
+        $ref: '#/KEventSearchAgg'
+
+KEventSearchSort:
+  type: object
+  required:
+    - type
+  properties:
+    type:
+      type: string
+      enum: [Asc, Desc]
+    options:
+      type: object
+      additionalProperties: {}
+
+KEventSearchMapping:
+  type: object
+  required:
+    - type
+  properties:
+    field:
+      type: string
+    type:
+      type: string
+      enum: [Multiply]
+    options:
+      type: object
+      additionalProperties: {}
+
+KEventSearchControlMeta:
+  type: object
+  properties:
+    userId:
+      type: string
+      nullable: true
+    accountIds:
+      type: array
+      items:
+        type: string
+    startDateEpochMs:
+      type: number
+      nullable: true
+    endDateEpochMs:
+      type: number
+      nullable: true
+
+KEventSearch:
+  required:
+    - key
+  type: object
+  properties:
+    key:
+      type: string
+    collectionId:
+      type: string
+    size:
+      type: number
+    must:
+      type: array
+      items:
+        $ref: '#/KEventSearchFilter'
+    mustNot:
+      type: array
+      items:
+        $ref: '#/KEventSearchFilter'
+    should:
+      type: array
+      items:
+        $ref: '#/KEventSearchFilter'
+    aggs:
+      type: object
+      additionalProperties:
+        $ref: '#/KEventSearchAgg'
+    sort:
+      $ref: '#/KEventSearchSort'
+    mappings:
+      type: array
+      items:
+        $ref: '#/KEventSearchMapping'
+    controlMeta:
+      $ref: '#/KEventSearchControlMeta'
+    options:
+      type: object
+      additionalProperties: {}
+
+KEventSearchResultListEntry:
+  required:
+    - key
+  type: object
+  properties:
+    key:
+      type: string
+    values:
+      type: object
+      additionalProperties: {}
+    buckets:
+      type: array
+      items:
+        type: object
+        additionalProperties: {}

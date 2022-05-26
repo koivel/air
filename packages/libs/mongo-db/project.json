@@ -1,0 +1,35 @@
+{
+  "sourceRoot": "packages/libs/mongo-db/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/libs/mongo-db",
+        "main": "packages/libs/mongo-db/src/index.ts",
+        "tsConfig": "packages/libs/mongo-db/tsconfig.lib.json",
+        "assets": [
+          "packages/libs/mongo-db/*.md",
+          "packages/libs/mongo-db/src/static/db-mongodb-nyc3-59216.crt"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/libs/mongo-db/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/libs/mongo-db"],
+      "options": {
+        "jestConfig": "packages/libs/mongo-db/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

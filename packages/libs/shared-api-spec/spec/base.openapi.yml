@@ -1,0 +1,10 @@
+openapi: 3.0.1
+servers:
+  - url: 'https://api.koivel.com/api/v1/'
+  - url: http://localhost:3333/api/v1
+info:
+  title: koivel-api
+  version: 1.0.0
+paths: {}
+components:
+  schemas: {}

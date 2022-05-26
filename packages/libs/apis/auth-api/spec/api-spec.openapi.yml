@@ -1,0 +1,84 @@
+openapi: 3.0.1
+info:
+  title: event-api
+  version: 1.0.0
+servers:
+  - url: /auth-api
+paths:
+  /user/current:
+    get:
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: './models/user-api-models.yml#/KUser'
+  /user/login:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './models/user-api-models.yml#/KUserLoginReq'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: './models/api-keys-models.yml#/KJwt'
+  /user/register:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './models/user-api-models.yml#/KUserRegisterReq'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: './models/api-keys-models.yml#/KJwt'
+  /user/send-reset-password:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './models/user-api-models.yml#/KUserResetPasswordReq'
+      responses:
+        200:
+          description: Success
+  /user/update-password:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './models/user-api-models.yml#/KUserUpdatePasswordReq'
+      responses:
+        200:
+          description: Success
+  /api-keys/generate/events-write:
+    get:
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: './models/api-keys-models.yml#/KJwt'
+  /api-keys/generate/user-access:
+    get:
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: './models/api-keys-models.yml#/KJwt'
+components:
+  schemas: {}

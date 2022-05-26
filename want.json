@@ -1,0 +1,385 @@
+{
+  "key": "search1",
+  "collectionId": "runescape",
+  "resultFormat": "List",
+  "must": [
+    {
+      "type": "Equals",
+      "options": {
+        "field": "groupId",
+        "value": "total_xp"
+      }
+    },
+    {
+      "type": "Equals",
+      "options": {
+        "field": "accountId",
+        "value": "-7318973114356598950"
+      }
+    }
+  ],
+  "aggs": {
+    "rsSkills": {
+      "type": "GroupByTags",
+      "options": {
+        "tags": [
+          "skillName"
+        ]
+      },
+      "aggs": {
+        "minMax": {
+          "type": "MinMax",
+          "options": {
+            "diff": true
+          }
+        },
+        "60MAgg": {
+          "type": "MixMaxTimeseries",
+          "options": {
+            "calInterval": "hour",
+            "serialDiff": true
+          }
+        },
+        "10MAgg": {
+          "type": "MixMaxTimeseries",
+          "options": {
+            "fixedInterval": "10m",
+            "serialDiff": true
+          }
+        },
+        "1DAgg": {
+          "type": "MixMaxTimeseries",
+          "options": {
+            "calInterval": "day",
+            "serialDiff": true
+          }
+        }
+      }
+    }
+  }
+}
+
+{
+  "key": "search2",
+  "collectionId": "runescape",
+  "must": [
+    {
+      "type": "Equals",
+      "options": {
+        "field": "groupId",
+        "value": "loot/received"
+      }
+    }
+  ],
+  "mappings": [
+    {
+      "type": "Multiply",
+      "field": "rt.totalValue",
+      "options": {
+        "factorFields": [
+          "values.itemPrice",
+          "values.value"
+        ]
+      }
+    }
+  ],
+  "aggs": {
+    "time": {
+      "type": "Timeseries",
+      "aggs": {
+        "minMax": {
+          "type": "MinMax"
+        }
+      }
+    }
+  }
+}
+
+
+{
+  "key": "search2",
+  "collectionId": "runescape",
+  "must": [
+    {
+      "type": "Equals",
+      "options": {
+        "field": "groupId",
+        "value": "loot/received"
+      }
+    }
+  ],
+  "aggs": {
+    "itemGroups": {
+      "type": "GroupByTags",
+      "options": {
+        "tags": [
+          "itemId"
+        ]
+      },
+      "aggs": {
+        "last": {
+          "type": "Last"
+        }
+      }
+    }
+  }
+}
+
+
+{
+  "key": "search2",
+  "collectionId": "runescape",
+  "must": [
+    {
+      "type": "Equals",
+      "options": {
+        "field": "groupId",
+        "value": "item-container-total-value"
+      }
+    }
+  ],
+  "aggs": {
+    "time": {
+      "type": "TimeseriesLast"
+    }
+  }
+}
+
+
+
+{
+  "key": "search1",
+  "collectionId": "runescape",
+  "resultFormat": "List",
+  "must": [
+    {
+      "type": "Equals",
+      "options": {
+        "field": "groupId",
+        "value": "item-container-total-value"
+      }
+    },
+    {
+      "type": "Equals",
+      "options": {
+        "field": "accountId",
+        "value": "-7318973114356598950"
+      }
+    }
+  ],
+  "aggs": {
+    "time": {
+      "type": "Timeseries",
+      "aggs": {
+        "containers": {
+          "type": "GroupByTags",
+          "options": {
+            "tags": [
+              "containerId"
+            ]
+          },
+          "aggs": {
+            "last": {
+              "type": "Last"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+{
+  "title": "XP Gains/10m",
+  "type": "hchart-stock",
+  "className": "lg:col-span-3",
+  "options": {
+    "navigator": true
+  },
+  "series": [
+    {
+      "resultSelector": "search1.aggs.rsSkills.*.10MAgg",
+      "dataSelector": [
+        "keys.10MAgg",
+        "values.serialDiff"
+      ],
+      "nameSelector": "keys.rsSkills"
+    }
+  ]
+}
+
+
+
+{
+  "search1": {
+    "aggregations": {
+      "rsSkills": [
+        {
+          "key": "hitpoints",
+          "aggs": {
+            "1DAgg": {
+              "buckets": [
+                {
+                  "key": 1653177600000,
+                  "values": {
+                    "minValue": 16309253,
+                    "maxValue": 16395042,
+                    "serialDiff": 85789
+                  }
+                }
+              ]
+            },
+            "10MAgg": {
+              "buckets": [
+                {
+                  "key": 1653232200000,
+                  "values": {
+                    "minValue": 16309253,
+                    "maxValue": 16309488,
+                    "serialDiff": 235
+                  }
+                },
+                {
+                  "key": 1653234000000,
+                  "values": {
+                    "minValue": 16309521,
+                    "maxValue": 16309654,
+                    "serialDiff": 166
+                  }
+                }
+              ]
+            },
+            "60MAgg": {
+              "buckets": [
+                {
+                  "key": 1653231600000,
+                  "values": {
+                    "minValue": 16309253,
+                    "maxValue": 16311947,
+                    "serialDiff": 2694
+                  }
+                },
+                {
+                  "key": 1653235200000,
+                  "values": {
+                    "minValue": 16312447,
+                    "maxValue": 16339815,
+                    "serialDiff": 27868
+                  }
+                }
+              ]
+            },
+            "minMax": {
+              "values": {
+                "min": 16309253,
+                "max": 16309253,
+                "diff": 85789
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+{
+  "title": "XP Gains/10m",
+  "type": "hchart-stock",
+  "className": "lg:col-span-3",
+  "options": {
+    "navigator": true
+  },
+  "series": [
+    {
+      "resultSelector": "search1.aggs.rsSkills.*.aggs.10MAgg",
+      "dataSelector": [
+        "keys.10MAgg",
+        "values.serialDiff"
+      ],
+      "nameSelector": "keys.rsSkills"
+    }
+  ]
+},
+{
+  "title": "Total XP Gained",
+  "type": "hchart-pie",
+  "series": [
+    {
+      "resultSelector": "search1.aggs.rsSkills.*.aggs.minMax",
+      "dataSelector": [
+        "values.diff"
+      ],
+      "nameSelector": "keys.rsSkills"
+    }
+  ]
+},
+{
+  "title": "XP Gains/Hour Line",
+  "type": "hchart-stock",
+  "options": {
+    "type": "line"
+  },
+  "series": [{
+    "resultSelector": "search1.aggs.rsSkills.*.aggs.60MAgg",
+    "dataSelector": [
+      "keys.60MAgg",
+      "values.serialDiff"
+    ],
+    "nameSelector": "keys.rsSkills"
+  }]
+},
+{
+  "title": "XP Gains/Day Table",
+  "type": "ktable",
+  "className": "lg:row-span-2",
+  "options": {
+    "headers": [
+      "Skill",
+      "Start",
+      "End",
+      "Gained"
+    ]
+  },
+  "series": [{
+    "resultSelector": "search1.aggs.rsSkills.*.aggs.minMax",
+    "dataSelector": [
+      "values.min",
+      "values.max",
+      "values.diff"
+    ],
+    "nameSelector": "keys.rsSkills"
+  }]
+},
+{
+  "title": "XP Gains/Hour Nav",
+  "type": "hchart-stock",
+  "options": {
+    "navigator": true
+  },
+  "series": [{
+    "resultSelector": "search1.aggs.rsSkills.*.aggs.60MAgg",
+    "dataSelector": [
+      "keys.60MAgg",
+      "values.serialDiff"
+    ],
+    "nameSelector": "keys.rsSkills"
+  }]
+},
+{
+  "title": "XP Gains/Day",
+  "type": "hchart-stock",
+  "series": [{
+    "resultSelector": "search1.aggs.rsSkills.*.aggs.1DAgg",
+    "dataSelector": [
+      "keys.1DAgg",
+      "values.serialDiff"
+    ],
+    "nameSelector": "keys.rsSkills"
+  }]
+}

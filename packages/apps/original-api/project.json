@@ -1,0 +1,78 @@
+{
+  "sourceRoot": "packages/apps/original-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/original-api",
+        "main": "packages/apps/original-api/src/main.ts",
+        "tsConfig": "packages/apps/original-api/tsconfig.app.json",
+        "assets": [
+          "packages/apps/original-api/src/assets",
+          {
+            "input": "packages/libs/shared-api-spec/spec/dist",
+            "glob": "*",
+            "output": "spec"
+          }
+        ]
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
+        }
+      ],
+      "configurations": {
+        "production": {
+          "generatePackageJson": true,
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "packages/apps/original-api/src/environments/environment.ts",
+              "with": "packages/apps/original-api/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "original-api:build"
+      }
+    },
+    "build-publish-docker": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "yarn build-all",
+          "nx build original-api:build:production",
+          "docker build -f ./packages/apps/original-api/Dockerfile . -t air/original-api:1.0.0",
+          "docker tag air/original-api:1.0.0 registry.digitalocean.com/air/air/original-api:LATEST",
+          "docker push registry.digitalocean.com/air/air/original-api:LATEST"
+        ],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/apps/original-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/original-api"],
+      "options": {
+        "jestConfig": "packages/apps/original-api/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

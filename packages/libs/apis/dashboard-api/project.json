@@ -1,0 +1,32 @@
+{
+  "sourceRoot": "packages/libs/apis/dashboard-api/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/libs/apis/dashboard-api",
+        "main": "packages/libs/apis/dashboard-api/src/index.ts",
+        "tsConfig": "packages/libs/apis/dashboard-api/tsconfig.lib.json",
+        "assets": ["packages/libs/apis/dashboard-api/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/libs/apis/dashboard-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/libs/apis/dashboard-api"],
+      "options": {
+        "jestConfig": "packages/libs/apis/dashboard-api/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

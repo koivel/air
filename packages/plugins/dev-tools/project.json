@@ -1,0 +1,53 @@
+{
+  "sourceRoot": "packages/plugins/dev-tools/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/plugins/dev-tools",
+        "main": "packages/plugins/dev-tools/src/index.ts",
+        "tsConfig": "packages/plugins/dev-tools/tsconfig.lib.json",
+        "assets": [
+          "packages/plugins/dev-tools/*.md",
+          {
+            "input": "./packages/plugins/dev-tools/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/plugins/dev-tools/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/plugins/dev-tools",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/plugins/dev-tools",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/plugins/dev-tools/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/plugins/dev-tools"],
+      "options": {
+        "jestConfig": "packages/plugins/dev-tools/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

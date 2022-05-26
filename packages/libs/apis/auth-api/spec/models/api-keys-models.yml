@@ -1,0 +1,23 @@
+KJwt:
+  type: object
+  properties:
+    result:
+      type: string
+
+KJwtBody:
+  type: object
+  properties:
+    userId:
+      type: string
+    generationUuid:
+      type: string
+    perms:
+      type: array
+      items:
+        $ref: '#/KJwtPermission'
+
+KJwtPermission:
+  type: object
+  properties:
+    perm:
+      type: string

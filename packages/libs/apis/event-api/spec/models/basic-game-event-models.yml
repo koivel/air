@@ -1,0 +1,62 @@
+KEventSeries:
+  type: object
+  required:
+    - accountId
+    - collectionId
+    - events
+  properties:
+    collectionId:
+      type: string
+      example: runescape
+    accountId:
+      type: string
+      example: account84584
+    accountDisplayName:
+      type: string
+      example: Zachlie
+    events:
+      type: array
+      items:
+        $ref: '#/KEvent'
+
+KEvent:
+  type: object
+  required:
+    - groupId
+  properties:
+    groupId:
+      type: string
+      example: npc_loot
+    recordedAtEpochMs:
+      type: number
+      example: 1650073583254
+    location:
+      $ref: '#/KEventLocation'
+    plane:
+      type: number
+      example: 0
+    tags:
+      type: object
+      additionalProperties:
+        type: string
+    values:
+      type: object
+      additionalProperties:
+        type: number
+
+KEventLocation:
+  required:
+    - x
+    - y
+  type: object
+  properties:
+    x:
+      type: number
+      minimum: -100000
+      maximum: 100000
+      example: 20
+    y:
+      type: number
+      minimum: -100000
+      maximum: 100000
+      example: 30

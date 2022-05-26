@@ -1,0 +1,31 @@
+{
+  "sourceRoot": "packages/libs/es-db/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/libs/es-db",
+        "main": "packages/libs/es-db/src/index.ts",
+        "tsConfig": "packages/libs/es-db/tsconfig.lib.json",
+        "assets": ["packages/libs/es-db/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/libs/es-db/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/libs/es-db"],
+      "options": {
+        "jestConfig": "packages/libs/es-db/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

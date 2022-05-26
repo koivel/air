@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "attach node app",
+        "type": "node",
+        "request": "attach",
+        "port": 9229
+      },
+      {
+        "type": "pwa-node",
+        "request": "launch",
+        "name": "original-api launch",
+        "skipFiles": [
+            "<node_internals>/**"
+        ],
+        "program": "${workspaceFolder}/packages/apps/original-api/src/main.ts",
+        "outFiles": [
+            "${workspaceFolder}/**/*.js"
+        ]
+      }
+    ]
+  }

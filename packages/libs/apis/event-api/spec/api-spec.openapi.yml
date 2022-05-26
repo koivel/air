@@ -1,0 +1,43 @@
+openapi: 3.0.1
+info:
+  title: event-api
+  version: 1.0.0
+servers:
+  - url: /event-api
+paths:
+  /events/write:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './models/http-models.yml#/KEventWriteReq'
+      responses:
+        200:
+          description: Success
+  /events/search:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './models/event-search-models.yml#/KEventSearch'
+      responses:
+        200:
+          description: Success
+  /events/search/accounts:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './models/event-search-models.yml#/KEventAccountSearch'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: './models/event-search-models.yml#/KEventAccountSearchResult'
+components:
+  schemas: {}

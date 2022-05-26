@@ -1,0 +1,19 @@
+{
+  "sourceRoot": "packages/libs/shared-api-spec/src",
+  "targets": {
+    "prepare": {
+      "executor": "@air/plugins-dev-tools:build"
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/libs/shared-api-spec",
+        "main": "packages/libs/shared-api-spec/src/index.ts",
+        "tsConfig": "packages/libs/shared-api-spec/tsconfig.lib.json",
+        "assets": ["packages/libs/shared-api-spec/*.md"]
+      }
+    }
+  },
+  "tags": []
+}

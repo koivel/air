@@ -1,0 +1,47 @@
+PUT _index_template/event_stats
+{
+  "template": {
+    "mappings": {
+      "dynamic": "strict",
+      "_source": {
+        "enabled": false
+      },
+      "_routing": {
+        "required": false
+      },
+      "dynamic_templates": [],
+      "properties": {
+        "userId": {
+          "type": "constant_keyword"
+        },
+        "gameId": {
+          "type": "constant_keyword"
+        },
+        "accountId": {
+          "type": "keyword"
+        },
+        "statId": {
+          "type": "keyword"
+        },
+        "type": {
+          "type": "keyword"
+        },
+        "value": {
+          "type": "double"
+        },
+        "recordedEpochMs": {
+          "type": "date",
+          "index": true,
+          "ignore_malformed": false,
+          "doc_values": true,
+          "store": false,
+          "format": "epoch_millis"
+        }
+      }
+    }
+  },
+  "index_patterns": [
+    "event_stats-*-*"
+  ],
+  "data_stream": {}
+}

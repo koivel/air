@@ -1,0 +1,47 @@
+KUserLoginReq:
+  type: object
+  properties:
+    email:
+      type: string
+    password:
+      type: string
+
+KUserRegisterReq:
+  type: object
+  properties:
+    email:
+      type: string
+    password:
+      type: string
+
+KUserUpdatePasswordReq:
+  type: object
+  properties:
+    jwt:
+      type: string
+    password:
+      type: string
+
+KUserResetPasswordReq:
+  type: object
+  properties:
+    email:
+      type: string
+
+KUser:
+  type: object
+  properties:
+    _id:
+      type: string
+    email:
+      type: string
+    registrationTimeEpochMs:
+      type: number
+    passwordHash:
+      type: string
+    passwordSalt:
+      type: string
+    perms:
+      type: array
+      items:
+        type: string

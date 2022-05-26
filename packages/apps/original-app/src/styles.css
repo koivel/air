@@ -1,0 +1,76 @@
+@import 'https://code.highcharts.com/css/highcharts.css';
+
+@tailwind components;
+@tailwind base;
+@tailwind utilities;
+
+.highcharts-background {
+  fill: transparent;
+}
+
+.highcharts-stack-labels text {
+  fill: white;
+}
+
+.highcharts-axis-labels text {
+  fill: white;
+}
+
+.highcharts-data-label text, text.highcharts-data-label {
+  fill: white;
+}
+
+.highcharts-range-selector-buttons .highcharts-button {
+  stroke-width: 0px;
+}
+
+.highcharts-color-0 {
+  fill: #aed9e0;
+  stroke: #aed9e0;
+}
+
+.highcharts-color-1 {
+  fill: #cdeac0;
+  stroke: #cdeac0;
+}
+
+.highcharts-color-2 {
+  fill: #ffc6ff;
+  stroke: #ffc6ff;
+}
+
+.highcharts-color-3 {
+  fill: #a0c4ff;
+  stroke: #a0c4ff;
+}
+
+.highcharts-color-4 {
+  fill: #ffadad;
+  stroke: #ffadad;
+}
+
+.highcharts-color-5 {
+  fill: #cbc0d3;
+  stroke: #cbc0d3;
+}
+
+.highcharts-range-label rect {
+  fill: none;
+}
+
+.highcharts-range-label text {
+  fill: #e0e0e3;
+}
+
+.highcharts-range-input rect {
+  fill: none;
+}
+
+.highcharts-range-input text {
+  fill: silver;
+}
+
+.highcharts-range-input {
+  stroke-width: 1px;
+  stroke: #505053;
+}

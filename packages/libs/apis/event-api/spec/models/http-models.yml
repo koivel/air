@@ -1,0 +1,19 @@
+KEventWriteReq:
+  required:
+    - eventSeries
+  type: object
+  properties:
+    eventSeries:
+      type: array
+      items:
+        $ref: './basic-game-event-models.yml#/KEventSeries'
+
+KEventCollection:
+  type: object
+  properties:
+    _id:
+      type: string
+    defualtPerms:
+      type: array
+      items:
+        type: string

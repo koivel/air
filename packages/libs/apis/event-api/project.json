@@ -1,0 +1,31 @@
+{
+  "sourceRoot": "packages/libs/apis/event-api/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/libs//apis/event-api",
+        "main": "packages/libs/apis/event-api/src/index.ts",
+        "tsConfig": "packages/libs/apis/event-api/tsconfig.lib.json",
+        "assets": ["packages/libs/apis/event-api/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/libs/apis/event-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/libs/apis/event-api"],
+      "options": {
+        "jestConfig": "packages/libs/apis/event-api/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

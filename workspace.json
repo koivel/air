@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "projects": {
+    "apis-auth-api": "packages/libs/apis/auth-api",
+    "apis-dashboard-api": "packages/libs/apis/dashboard-api",
+    "dev-tools": "packages/plugins/dev-tools",
+    "es-db": "packages/libs/es-db",
+    "event-api": "packages/libs/apis/event-api",
+    "mongo-db": "packages/libs/mongo-db",
+    "original-api": "packages/apps/original-api",
+    "original-app": "packages/apps/original-app",
+    "shared-api-spec": "packages/libs/shared-api-spec",
+    "shared-utils": "packages/libs/shared-utils"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom", "ES2020"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noImplicitThis": false,
+    "strictNullChecks": false,
+    "strictBindCallApply": false,
+    "noImplicitReturns": true,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@air/apis-auth-api": ["packages/libs/apis/auth-api/src/index.ts"],
+      "@air/dashboard-api": ["packages/libs/apis/dashboard-api/src/index.ts"],
+      "@air/es-db": ["packages/libs/es-db/src/index.ts"],
+      "@air/event-api": ["packages/libs/apis/event-api/src/index.ts"],
+      "@air/mongo-db": ["packages/libs/mongo-db/src/index.ts"],
+      "@air/plugins-dev-tools": ["packages/plugins/dev-tools/src/index.ts"],
+      "@air/shared-api-spec": ["packages/libs/shared-api-spec/src/index.ts"],
+      "@air/shared-utils": ["packages/libs/shared-utils/src/index.ts"]
+    }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "tmp"]
+}
