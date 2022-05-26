@@ -1103,83 +1103,6 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
-"@easepick/amp-plugin@^1.1.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@easepick/amp-plugin/-/amp-plugin-1.1.7.tgz#6036976f4724079b66b5808f5b1c71d6531eb323"
-  integrity sha512-M4rIpZlhuZyC6hfQ368ohXFZSJdOSERAL9kAtxOG9Xk3pgCaDj/77gkKHDaMlW/d3jHTGhY+NfDRj3IsYGfVQw==
-  dependencies:
-    "@easepick/base-plugin" "^1.1.0"
-
-"@easepick/base-plugin@^1.1.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@easepick/base-plugin/-/base-plugin-1.1.7.tgz#03f1456df30669ef5ba3dc8155bc8204f71b0e02"
-  integrity sha512-mpBUYSJujcR7HR8tz/HLE27xHDZk/679mGXecFScK4NYgZybS2JjMpZVfCvoCEIYg7Xx5OL2Hhx2HVVVYVMjLQ==
-  dependencies:
-    "@easepick/core" "^1.1.0"
-
-"@easepick/bundle@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@easepick/bundle/-/bundle-1.1.7.tgz#937facc2cbfe5e8209f297a6b6e9f8ffe5d3d680"
-  integrity sha512-VsZZFuozOKQt3U/3uNilP/mj8atpeDGCtIWQ+E6KbDh5YDsTj88+4YAgi3D+ygbNmxMvMwkdh2z+2VAA/K58PA==
-  dependencies:
-    "@easepick/amp-plugin" "^1.1.0"
-    "@easepick/base-plugin" "^1.1.0"
-    "@easepick/core" "^1.1.0"
-    "@easepick/datetime" "^1.1.0"
-    "@easepick/kbd-plugin" "^1.1.0"
-    "@easepick/lock-plugin" "^1.1.0"
-    "@easepick/preset-plugin" "^1.1.0"
-    "@easepick/range-plugin" "^1.1.0"
-    "@easepick/time-plugin" "^1.1.0"
-
-"@easepick/core@^1.1.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@easepick/core/-/core-1.1.7.tgz#d23ded7692a135b3bc904ab3187d4185b0f296f7"
-  integrity sha512-q7Elbb75BN+Nf0KDtRGVG8/pCw2g+fD/pJQZrADhQmR1XtV46GPi6RW83f8pLTrZNsLNrcIUVmoSGdNzfhorjA==
-  dependencies:
-    "@easepick/datetime" "^1.1.0"
-
-"@easepick/datetime@^1.1.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@easepick/datetime/-/datetime-1.1.7.tgz#aed88f2edd850ff0ecd398c3c35301f3e612a004"
-  integrity sha512-r7n+dyGg+u+IDUWdYbuzMnCkk0amJjHoLyoz4az9OMdmJcdJzC76+n/Pt8T2KLRoCgxUwi8NEBp5MUaKqagXTw==
-
-"@easepick/kbd-plugin@^1.1.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@easepick/kbd-plugin/-/kbd-plugin-1.1.7.tgz#ae87762cc7477b3f8aaadd34bdfd1233cca8dda5"
-  integrity sha512-UpLWC7saXLx4u3GJrZwyetIlEVC4EH6nYH1QFLaCnKYV1+FMtgkKA5cRHRKdNaF9flyrEYxozQN+f8yM2O7I7A==
-  dependencies:
-    "@easepick/base-plugin" "^1.1.0"
-
-"@easepick/lock-plugin@^1.1.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@easepick/lock-plugin/-/lock-plugin-1.1.7.tgz#cebce3039c4d1f4ea92cebb3f8477ecefc75e4d0"
-  integrity sha512-bwynn3w7GC1N5Txi92yPWchDRNvItnGRWgdcqW3uZnw07qNMjk6UuLaKG14uJZhPMl62qiTE7TI2ner0QMMqiQ==
-  dependencies:
-    "@easepick/base-plugin" "^1.1.0"
-
-"@easepick/preset-plugin@^1.1.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@easepick/preset-plugin/-/preset-plugin-1.1.7.tgz#7623c957040e6afc54e41a52e035a4ea06d93686"
-  integrity sha512-DY+HvwCL1jQXeOE/sW0YNtoPpSv6tDkwqTg8KX8ngBPnfCllJc/eqOpLyKORwG+b+yGgshp9LmajJuRxcGTQng==
-  dependencies:
-    "@easepick/base-plugin" "^1.1.0"
-    "@easepick/range-plugin" "^1.1.0"
-
-"@easepick/range-plugin@^1.1.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@easepick/range-plugin/-/range-plugin-1.1.7.tgz#df0f6ed62fa21fa3ad220c5ff27a51aa057f7ade"
-  integrity sha512-8nrAo9eWr+2j7jL0xKOp/mhk15AzSed2VsHhFtjs6aKdcEnby+TLOlj0oa4yAjZnL+saJKgCzjnbLQkFKRN6gg==
-  dependencies:
-    "@easepick/base-plugin" "^1.1.0"
-
-"@easepick/time-plugin@^1.1.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@easepick/time-plugin/-/time-plugin-1.1.7.tgz#6499e5bad67afe113d04df2430fbed3eac791fd2"
-  integrity sha512-/Zl4hBxs03m0JwhdJWOvv1BcQbAFWGqbgxngblTY6L+3yahQ6EpvAWQdl5uMbL6l8UvZbpBodHTk9ehEPLgTlw==
-  dependencies:
-    "@easepick/base-plugin" "^1.1.0"
-
 "@elastic/apm-rum-core@^5.16.0":
   version "5.16.0"
   resolved "https://registry.yarnpkg.com/@elastic/apm-rum-core/-/apm-rum-core-5.16.0.tgz#c3f6aaaee005717f10578877a3d1c7e6894eb63f"
@@ -2075,7 +1998,7 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@popperjs/core@^2.11.5":
+"@popperjs/core@^2.11.5", "@popperjs/core@^2.9.2":
   version "2.11.5"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
@@ -4226,6 +4149,11 @@ cjs-module-lexer@^1.0.0:
   resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz#9f84ba3244a512f3a54e5277e8eef4c489864e40"
   integrity sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==
 
+classnames@^2.2.6:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
+
 clean-stack@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/clean-stack/-/clean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
@@ -4889,7 +4817,7 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-date-fns@^2.16.1:
+date-fns@^2.16.1, date-fns@^2.24.0:
   version "2.28.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.28.0.tgz#9570d656f5fc13143e50c975a3b6bbeb46cd08b2"
   integrity sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==
@@ -10124,6 +10052,18 @@ react-cookie@^4.1.1:
     hoist-non-react-statics "^3.0.0"
     universal-cookie "^4.0.0"
 
+react-datepicker@^4.8.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-4.8.0.tgz#11b8918d085a1ce4781eee4c8e4641b3cd592010"
+  integrity sha512-u69zXGHMpxAa4LeYR83vucQoUCJQ6m/WBsSxmUMu/M8ahTSVMMyiyQzauHgZA2NUr9y0FUgOAix71hGYUb6tvg==
+  dependencies:
+    "@popperjs/core" "^2.9.2"
+    classnames "^2.2.6"
+    date-fns "^2.24.0"
+    prop-types "^15.7.2"
+    react-onclickoutside "^6.12.0"
+    react-popper "^2.2.5"
+
 react-dom@18.1.0:
   version "18.1.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.1.0.tgz#7f6dd84b706408adde05e1df575b3a024d7e8a2f"
@@ -10166,7 +10106,12 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-popper@^2.3.0:
+react-onclickoutside@^6.12.0:
+  version "6.12.1"
+  resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.12.1.tgz#92dddd28f55e483a1838c5c2930e051168c1e96b"
+  integrity sha512-a5Q7CkWznBRUWPmocCvE8b6lEYw1s6+opp/60dCunhO+G6E4tDTO2Sd2jKE+leEnnrLAE2Wj5DlDHNqj5wPv1Q==
+
+react-popper@^2.2.5, react-popper@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-2.3.0.tgz#17891c620e1320dce318bad9fede46a5f71c70ba"
   integrity sha512-e1hj8lL3uM+sgSR4Lxzn5h1GxBlpa4CQz0XLF8kx4MDrDRWY0Ena4c97PUeSX9i5W3UAfDP0z0FXCTQkoXUl3Q==

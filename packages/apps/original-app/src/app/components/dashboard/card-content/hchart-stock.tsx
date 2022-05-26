@@ -43,12 +43,12 @@ export function HChartStock(props) {
         enabled: true,
         formatter: function () {
           if (this.total > 1000000) {
-            return (this.total / 1000000).toFixed(2) + 'm';
+            return (this.total / 1000000)?.toFixed(2) + 'm';
           }
           if (this.total > 1000) {
-            return (this.total / 1000).toFixed(1) + 'k';
+            return (this.total / 1000)?.toFixed(1) + 'k';
           }
-          return this.total.toFixed(0);
+          return this.total?.toFixed(0);
         },
       },
     },

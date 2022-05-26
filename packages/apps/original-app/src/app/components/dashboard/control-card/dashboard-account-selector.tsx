@@ -9,7 +9,7 @@ export default function DashboardAccountSelector() {
     React.useContext(KoivelDashboard);
 
   return (
-    <div className="z-30 w-full">
+    <div className="z-10 w-full">
       <Listbox value={selectedAccount} onChange={setSelectedAccount}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-slate-400 py-2 pl-3 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-300 sm:text-sm">

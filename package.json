@@ -5,13 +5,11 @@
   "scripts": {
     "build": "nx affected:build",
     "build-all": "nx run shared-api-spec:prepare && nx affected:build --all --skip-nx-cache",
-    "build-docker": "nx build-docker original-api",
-    "build-java": "yarn openapi-generator-cli generate -i packages/libs/shared-api-spec/spec/dist/full.openapi.yml -o tmp/java -g java",
+    "publish-all": "nx build-publish-docker original-api && nx build-publish-docker original-api",
     "run-all": "nx run-many --parallel --target=serve --projects=original-api,original-app"
   },
   "private": true,
   "dependencies": {
-    "@easepick/bundle": "^1.1.7",
     "@elastic/apm-rum": "^5.11.1",
     "@elastic/apm-rum-react": "^1.4.1",
     "@elastic/elasticsearch": "8.2.0-patch.1",
@@ -48,6 +46,7 @@
     "postcss": "^8.4.13",
     "react": "18.1.0",
     "react-cookie": "^4.1.1",
+    "react-datepicker": "^4.8.0",
     "react-dom": "18.1.0",
     "react-gravatar": "^2.6.3",
     "react-popper": "^2.3.0",
