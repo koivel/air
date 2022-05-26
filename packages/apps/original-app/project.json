@@ -42,6 +42,18 @@
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false
+        },
+        "local-production": {
+          "fileReplacements": [
+            {
+              "replace": "packages/apps/original-app/src/environments/environment.ts",
+              "with": "packages/apps/original-app/src/environments/environment.local-prod.ts"
+            }
+          ],
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
         }
       }
     },
@@ -59,7 +71,10 @@
         "production": {
           "buildTarget": "original-app:build:production",
           "hmr": false
-        } 
+        },
+        "local-production": {
+          "buildTarget": "original-app:build:local-production"
+        }
       }
     },
     "build-publish-docker": {

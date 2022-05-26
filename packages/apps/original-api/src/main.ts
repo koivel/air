@@ -44,7 +44,9 @@ async function init() {
   app.use(
     cors({
       credentials: true,
-      origin: environment.production ? ['https://koivel.com'] : '*',
+      origin: environment.production
+        ? ['https://koivel.com', 'http://localhost:4200']
+        : '*',
       allowedHeaders: ['Authorization', 'Content-Type'],
       maxAge: environment.production ? 86400 : null,
     })
