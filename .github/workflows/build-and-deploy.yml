@@ -57,11 +57,11 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
+      - name: nx build-docker
+        run: yarn nx affected --target=build-docker --parallel
+      
       - name: doctl registry login
         run: doctl registry login --expiry-seconds 600
 
-      - name: nx build-publish-docker
-        run: yarn nx affected --target=build-publish-docker --parallel
-      
-      - name: nx doctl-app-deploy
+      - name: nx doctl-app-publish-deploy
         run: yarn nx affected --target=doctl-app-deploy --parallel

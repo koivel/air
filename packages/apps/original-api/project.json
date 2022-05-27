@@ -45,15 +45,23 @@
         "buildTarget": "original-api:build"
       }
     },
-    "build-publish-docker": {
+    "build-docker": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": [
-          "docker build -f ./packages/apps/original-api/Dockerfile . -t air/original-api:1.0.1",
-          "docker tag air/original-api:1.0.1 registry.digitalocean.com/air/air/original-api:LATEST",
-          "docker push registry.digitalocean.com/air/air/original-api:LATEST"
-        ],
-        "parallel": false
+          "docker build -f ./packages/apps/original-api/Dockerfile . -t air/original-api:LATEST"
+        ]
+      }
+    },
+
+    "doctl-app-deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "docker tag air/original-api:LATEST registry.digitalocean.com/air/air/original-api:LATEST",
+          "docker push registry.digitalocean.com/air/air/original-api:LATEST",
+          "doctl apps air-original-api create-deployment"
+        ]
       }
     },
     "lint": {
