@@ -1,66 +1,63 @@
 {
-    "template": {
-      "settings": {
-        "index": {
-          "routing": {
-            "allocation": {
-              "include": {
-                "_tier_preference": "data_hot"
-              }
-            }
-          }
+  "_routing": {
+    "required": false
+  },
+  "numeric_detection": false,
+  "_source": {
+    "excludes": [],
+    "includes": [],
+    "enabled": true
+  },
+  "dynamic": true,
+  "dynamic_templates": [
+    {
+      "tags": {
+        "path_match": "tags.*",
+        "mapping": {
+          "type": "keyword"
         }
-      },
-      "mappings": {
-        "dynamic": "strict",
-        "dynamic_templates": [],
-        "properties": {
-          "@timestamp": {
-            "type": "date",
-            "format": "epoch_millis"
-          },
-          "accountId": {
-            "type": "keyword"
-          },
-          "collectionId": {
-            "type": "keyword"
-          },
-          "groupId": {
-            "type": "keyword"
-          },
-          "location": {
-            "type": "geo_point"
-          },
-          "plane": {
-            "type": "double"
-          },
-          "tags": {
-            "properties": {
-              "tag0": {
-                "type": "keyword"
-              },
-              "tag1": {
-                "type": "keyword"
-              },
-              "tag2": {
-                "type": "keyword"
-              },
-              "tag3": {
-                "type": "keyword"
-              },
-              "tag4": {
-                "type": "keyword"
-              }
-            }
-          },
-          "userId": {
-            "type": "keyword"
-          },
-          "value": {
-            "type": "double"
-          }
-        }
-      },
-      "aliases": {}
+      }
+    }
+  ],
+  "date_detection": false,
+  "properties": {
+    "plane": {
+      "type": "double"
+    },
+    "accountDisplayName": {
+      "type": "keyword"
+    },
+    "accountId": {
+      "type": "keyword"
+    },
+    "@timestamp": {
+      "format": "epoch_millis",
+      "index": true,
+      "ignore_malformed": false,
+      "store": false,
+      "type": "date",
+      "doc_values": true
+    },
+    "groupId": {
+      "eager_global_ordinals": false,
+      "norms": false,
+      "index": true,
+      "store": false,
+      "type": "keyword",
+      "index_options": "docs",
+      "split_queries_on_whitespace": false,
+      "doc_values": true
+    },
+    "location": {
+      "type": "geo_point"
+    },
+    "collectionId": {
+      "type": "keyword"
+    },
+    "userId": {
+      "type": "keyword"
     }
   }
+}
+
+Close

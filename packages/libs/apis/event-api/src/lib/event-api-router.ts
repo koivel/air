@@ -1,17 +1,18 @@
+import {
+  KEventAccountSearch,
+  KEventAccountSearchResult,
+  KEventCollection,
+  KEventSearch,
+  KEventWriteReq,
+  KJwtBody,
+} from '@air/shared-api-spec';
+import { AuthUtil, JwtUtil, Logger, TtlCache } from '@air/shared-utils';
 import { Router } from 'express';
 import { singleton } from 'tsyringe';
-import {
-  KEventWriteReq,
-  KEventSearch,
-  KJwtBody,
-  KEventCollection,
-  KEventAccountSearchResult,
-  KEventAccountSearch,
-} from '@air/shared-api-spec';
+
 import { EventApiDao } from './event-api-dao';
-import { Logger, JwtUtil, AuthUtil } from '@air/shared-utils';
-import { SearchContext } from './search/search-context';
 import { EventCollectionDao } from './event-collection-dao';
+import { SearchContext } from './search/search-context';
 
 @singleton()
 export class EventApiRouter {
@@ -19,7 +20,8 @@ export class EventApiRouter {
 
   constructor(
     private eventApiDao: EventApiDao,
-    private eventCollectionDao: EventCollectionDao
+    private eventCollectionDao: EventCollectionDao,
+    private accountsCache: TtlCache<KEventAccountSearchResult[]>
   ) {}
 
   private async assertPermsAllow(
@@ -33,7 +35,7 @@ export class EventApiRouter {
     const eventCollection: KEventCollection =
       await this.eventCollectionDao.findOneById(collectionId);
     const perms: string[] = [
-      ...eventCollection?.defualtPerms || [],
+      ...(eventCollection?.defualtPerms || []),
       ...(decoded ? decoded.perms.map((p) => p.perm) : []),
     ];
     AuthUtil.assertPermsAllow(allowedPerms, perms, { $userId: userId });
@@ -87,7 +89,11 @@ export class EventApiRouter {
       ]);
 
       const accounts: KEventAccountSearchResult[] =
-        await this.eventApiDao.searchAccounts(collectionId, searchUserId);
+        await this.accountsCache.computeIfAbsentAsync(
+          `${collectionId}/${searchUserId}`,
+          120,
+          () => this.eventApiDao.searchAccounts(collectionId, searchUserId)
+        );
 
       const result = {
         success: true,
