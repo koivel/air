@@ -62,3 +62,6 @@ jobs:
 
       - name: nx build-publish-docker
         run: yarn nx affected --target=build-publish-docker --parallel
+      
+      - name: nx doctl-app-deploy
+        run: yarn nx affected --target=doctl-app-deploy --parallel
