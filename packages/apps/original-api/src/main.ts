@@ -1,5 +1,19 @@
+import 'reflect-metadata';
+
+import { AuthApiRouter } from '@air/apis-auth-api';
+import { DashboardApiRouter } from '@air/dashboard-api';
+import { EventApiRouter } from '@air/event-api';
+import { MongoDbService } from '@air/mongo-db';
+import { AirContext, Logger } from '@air/shared-utils';
+import * as bodyParser from 'body-parser';
+import cors from 'cors';
 import apm from 'elastic-apm-node';
+import express from 'express';
+import * as OpenApiValidator from 'express-openapi-validator';
+import { container } from 'tsyringe';
+
 import { environment } from './environments/environment';
+
 const apmClient = apm.start({
   // Override the service name from package.json
   // Allowed characters: a-z, A-Z, 0-9, -, _, and space
@@ -16,21 +30,6 @@ const apmClient = apm.start({
   active: environment.production,
   captureBody: 'errors',
 });
-
-import 'reflect-metadata';
-import { container } from 'tsyringe';
-
-import * as OpenApiValidator from 'express-openapi-validator';
-import * as bodyParser from 'body-parser';
-
-import { AirContext, Logger } from '@air/shared-utils';
-import { EventApiRouter } from '@air/event-api';
-import express from 'express';
-import cors from 'cors';
-
-import { MongoDbService } from '@air/mongo-db';
-import { DashboardApiRouter } from '@air/dashboard-api';
-import { AuthApiRouter } from '@air/apis-auth-api';
 
 async function init() {
   AirContext.apm = apmClient;
@@ -72,7 +71,7 @@ async function init() {
   });
 
   app.get('/api/v1/meta', (req, res) => {
-    res.write('meta');
+    res.write('meta-1');
   });
 
   app.use(
