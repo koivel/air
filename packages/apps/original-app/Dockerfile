@@ -12,8 +12,8 @@ COPY . .
 RUN rm -rf /dist
 RUN rm -rf /tmp
 RUN yarn install
+RUN yarn nx run shared-api-spec:prepare
 RUN yarn nx run original-app:build:production
-
 
 FROM nginx:latest
 COPY --from=0 /build/packages/apps/original-app/nginx.conf /etc/nginx/conf.d/default.conf

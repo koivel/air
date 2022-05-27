@@ -12,6 +12,7 @@ COPY . .
 RUN rm -rf /dist
 RUN rm -rf /tmp
 RUN yarn install
+RUN yarn nx run shared-api-spec:prepare
 RUN yarn nx run original-api:build:production
 
 FROM node:lts-alpine
