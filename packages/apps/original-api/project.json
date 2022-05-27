@@ -53,14 +53,20 @@
         ]
       }
     },
-
+    "doctl-docker-publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "docker tag air/original-app:LATEST registry.digitalocean.com/air/air/original-app:LATEST",
+          "docker push registry.digitalocean.com/air/air/original-app:LATEST"
+        ]
+      }
+    },
     "doctl-app-deploy": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": [
-          "docker tag air/original-api:LATEST registry.digitalocean.com/air/air/original-api:LATEST",
-          "docker push registry.digitalocean.com/air/air/original-api:LATEST",
-          "doctl apps create-deployment air-original-api"
+          "doctl apps create-deployment b27d7bac-c722-40bc-a199-f6f15e7c3441"
         ]
       }
     },
