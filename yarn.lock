@@ -2306,6 +2306,11 @@
   resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.2.179.tgz#db29058624383990f160a8c1153702892bf1057b"
   integrity sha512-orVaK4BIa4qIW298uxvsKaeQLHqjZpxbaCATOnFibUBx2nX+P/MTHZm3WB1qgdmeKto8SEyFGkV8PAMcbFu5Rg==
 
+"@swc/core-linux-x64-gnu@^1.2.194":
+  version "1.2.194"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.2.194.tgz#6f091d74ef58354410c9bcba7285546579008b54"
+  integrity sha512-PA7kudCtpGy1m40LKTeIsSse0zkmMyHthYjfn7q8pUWlo2b9o9RxO5zsnLxLsgATsoPwfMmVl9m3+1xSkxJp+g==
+
 "@swc/core-linux-x64-musl@1.2.179":
   version "1.2.179"
   resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.2.179.tgz#92cd76007443753d1bda7540fcbffad626d677b6"

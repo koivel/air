@@ -49,10 +49,8 @@
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": [
-          "yarn build-all",
-          "nx build original-api:build:production",
-          "docker build -f ./packages/apps/original-api/Dockerfile . -t air/original-api:1.0.0",
-          "docker tag air/original-api:1.0.0 registry.digitalocean.com/air/air/original-api:LATEST",
+          "docker build -f ./packages/apps/original-api/Dockerfile . -t air/original-api:1.0.1",
+          "docker tag air/original-api:1.0.1 registry.digitalocean.com/air/air/original-api:LATEST",
           "docker push registry.digitalocean.com/air/air/original-api:LATEST"
         ],
         "parallel": false
