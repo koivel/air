@@ -42,12 +42,19 @@ jobs:
         with:
           path: node_modules
           key: cache-node-modules-${{ hashFiles('yarn.lock') }}
+      
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+    
+      - run: |
+          echo "BASE: ${{ env.NX_BASE }}"
+          echo "HEAD: ${{ env.NX_HEAD }}"
 
       - name: Prepare shared api spec
         run: yarn nx run shared-api-spec:prepare
 
       - name: Build affected porjects
-        run: yarn nx affected --target=build --base=origin/main --prod --parallel
+        run: yarn nx affected --target=build --prod --parallel
 
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
@@ -58,4 +65,4 @@ jobs:
         run: doctl registry login --expiry-seconds 600
 
       - name: Build and publish affected porjects
-        run: yarn nx affected --target=build-publish-docker --base=origin/main --parallel
+        run: yarn nx affected --target=build-publish-docker --parallel
