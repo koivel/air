@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
+
 import { environment } from '../../environments/environment';
 import { useKAuth } from './koivel-auth';
 
@@ -40,7 +41,7 @@ export const KoivelDashboardProvider = ({ children }) => {
   React.useEffect(() => {
     const userId: string = searchParams.get('userId');
     if (!userId && user?._id) {
-      setSearchParams({ userId: user?._id });
+      setSearchParams({ userId: user?._id }, { replace: true });
     }
   }, [searchParams, setSearchParams, user]);
 
