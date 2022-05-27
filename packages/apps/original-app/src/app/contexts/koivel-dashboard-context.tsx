@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { environment } from '../../environments/environment';
@@ -17,26 +17,34 @@ const initalContext = {
   setStartDateEpochMs: null,
   endDateEpochMs: null,
   setEndDateEpochMs: null,
+  setLastRefreshEpochMs: null,
 };
 export const KoivelDashboard = React.createContext(initalContext);
 
 export const KoivelDashboardProvider = ({ children }) => {
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = useState(true);
 
   const { authenticated, accessTokenRef, user } = useKAuth();
 
-  const [dashboardId, setDashboardId] = React.useState(null);
-  const [dashboardConfig, setDashboardConfig] = React.useState(null);
+  const [dashboardId, setDashboardId] = useState(null);
+  const [dashboardConfig, setDashboardConfig] = useState(null);
 
-  const [potentialAccounts, setPotentialAccounts] = React.useState();
-  const [selectedAccount, setSelectedAccount] = React.useState(null);
+  const [potentialAccounts, setPotentialAccounts] = useState();
+  const [selectedAccount, setSelectedAccount] = useState(null);
 
-  const [startDateEpochMs, setStartDateEpochMs] = React.useState(null);
-  const [endDateEpochMs, setEndDateEpochMs] = React.useState(null);
+  const [startDateEpochMs, setStartDateEpochMs] = useState(null);
+  const [endDateEpochMs, setEndDateEpochMs] = useState(null);
 
-  const [searchResults, setSearchResults] = React.useState(null);
+  const [searchResults, setSearchResults] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const [lastRefreshEpochMs, setLastRefreshEpochMs] = useState(
+    new Date().getTime()
+  );
+
+  const [lastSearchHash, setLastSearchHash] = useState(null);
+  const [searchHash, setSearchHash] = useState(null);
 
   React.useEffect(() => {
     const userId: string = searchParams.get('userId');
@@ -44,6 +52,28 @@ export const KoivelDashboardProvider = ({ children }) => {
       setSearchParams({ userId: user?._id }, { replace: true });
     }
   }, [searchParams, setSearchParams, user]);
+
+  React.useEffect(() => {
+    if (
+      searchParams &&
+      selectedAccount?.accountId &&
+      dashboardConfig?.searches
+    ) {
+      setSearchHash(
+        `${searchParams.get('userId')}/${
+          selectedAccount.accountId
+        }/${startDateEpochMs}/${endDateEpochMs}/${lastRefreshEpochMs}`
+      );
+    }
+  }, [
+    searchParams,
+    selectedAccount?.accountId,
+    startDateEpochMs,
+    endDateEpochMs,
+    setSearchHash,
+    lastRefreshEpochMs,
+    dashboardConfig?.searches,
+  ]);
 
   React.useEffect(() => {
     async function executeSearches() {
@@ -81,17 +111,21 @@ export const KoivelDashboardProvider = ({ children }) => {
       setLoading(false);
     }
 
-    if (dashboardConfig?.searches && selectedAccount) {
+    if (searchHash && searchHash !== lastSearchHash) {
+      setLastSearchHash(searchHash);
       executeSearches();
     }
   }, [
+    searchHash,
+    lastSearchHash,
     authenticated,
+    selectedAccount?.accountId,
     accessTokenRef,
     startDateEpochMs,
     endDateEpochMs,
+    setLastSearchHash,
     searchParams,
     dashboardConfig?.searches,
-    selectedAccount,
   ]);
 
   React.useEffect(() => {
@@ -132,11 +166,21 @@ export const KoivelDashboardProvider = ({ children }) => {
       }
     }
 
-    if (dashboardId) {
+    if (
+      dashboardId &&
+      dashboardConfig?._id !== dashboardId &&
+      authenticated !== null
+    ) {
       setLoading(true);
       loadDashboard();
     }
-  }, [dashboardId, searchParams, authenticated, accessTokenRef]);
+  }, [
+    dashboardId,
+    searchParams,
+    authenticated,
+    accessTokenRef,
+    dashboardConfig?._id,
+  ]);
 
   const value = {
     loading,
@@ -151,6 +195,7 @@ export const KoivelDashboardProvider = ({ children }) => {
     setStartDateEpochMs,
     endDateEpochMs,
     setEndDateEpochMs,
+    setLastRefreshEpochMs,
   };
 
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCookies } from 'react-cookie';
+
 import { environment } from '../../environments/environment';
 
 const initalContext = {
@@ -16,8 +17,10 @@ export const KoivelAuthContext = React.createContext(initalContext);
 export const KoivelAuthProvider = ({ children }) => {
   const [cookies, setCookie, removeCookie] = useCookies(['koivelRefreshToken']);
 
-  const [authenticated, setAuthenticated] = React.useState(false);
-  const [refreshToken, setRefreshToken] = React.useState(null);
+  const [authenticated, setAuthenticated] = React.useState(null);
+  const [refreshToken, setRefreshToken] = React.useState(
+    cookies.koivelRefreshToken
+  );
   const accessToken = React.useRef(null);
 
   const [user, setUser] = React.useState(null);
