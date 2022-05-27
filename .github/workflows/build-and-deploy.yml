@@ -43,7 +43,7 @@ jobs:
           key: cache-node-modules-${{ hashFiles('yarn.lock') }}
         
       - run: yarn nx run shared-api-spec:prepare
-      - run: yarn nx affected --target=build --base=origin/main --prod --parallel
+      - run: yarn nx affected --target=build --base=main --prod --parallel
 
   build_and_push_docker:
     runs-on: ubuntu-latest
