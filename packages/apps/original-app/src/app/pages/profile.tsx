@@ -51,7 +51,7 @@ const Profile = () => {
             value={response?.result}
           ></input>
 
-          <button className="rounded-md flex-grow text-indigo-700 font-medium bg-indigo-100 hover:bg-indigo-200 p-2" onClick={copyKeyToClipboard}>Copy</button>
+          <button className="rounded-md flex-grow text-indigo-700 font-medium bg-indigo-100 hover:bg-indigo-200 p-2" onClick={copyKeyToClipboard}>Copy Key</button>
         </div>
       </div>
     )
