@@ -34,7 +34,6 @@ jobs:
     needs: install-deps
     steps:
       - uses: actions/checkout@v3
-      - run: git fetch
         with:
           fetch-depth: 0
       
