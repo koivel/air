@@ -5,7 +5,8 @@
   "scripts": {
     "build": "nx affected:build",
     "build-all": "nx run shared-api-spec:prepare && nx affected:build --all --skip-nx-cache",
-    "publish-all": "nx build-publish-docker original-api && nx build-publish-docker original-app",
+    "lint": "nx affected:lint",
+    "lint-all": "nx affected:lint --all --skip-nx-cache",
     "run-all": "nx run-many --parallel --target=serve --projects=original-api,original-app",
     "run-original-app-local-prod": "nx run original-app:serve:local-production"
   },
@@ -104,6 +105,7 @@
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.5.0",
     "jest": "27.2.3",
