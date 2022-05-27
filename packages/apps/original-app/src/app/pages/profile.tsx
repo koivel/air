@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+
 import { environment } from '../../environments/environment';
 import { useKAuth } from '../contexts/koivel-auth';
 import useJwtFetch from '../hooks/useJwtFetch';
-import Gravatar from 'react-gravatar';
-import { toast } from 'react-toastify';
 
 const Profile = () => {
   const { user } = useKAuth();
@@ -51,7 +51,7 @@ const Profile = () => {
             value={response?.result}
           ></input>
 
-          <button className="rounded-md flex-grow text-indigo-700 font-medium bg-indigo-100 hover:bg-indigo-200 p-2" onClick={copyKeyToClipboard}>Copy Key!</button>
+          <button className="rounded-md flex-grow text-indigo-700 font-medium bg-indigo-100 hover:bg-indigo-200 p-2" onClick={copyKeyToClipboard}>Copy</button>
         </div>
       </div>
     )
