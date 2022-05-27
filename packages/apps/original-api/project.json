@@ -60,7 +60,7 @@
         "commands": [
           "docker tag air/original-api:LATEST registry.digitalocean.com/air/air/original-api:LATEST",
           "docker push registry.digitalocean.com/air/air/original-api:LATEST",
-          "doctl apps air-original-api create-deployment"
+          "doctl apps create-deployment air-original-api"
         ]
       }
     },
