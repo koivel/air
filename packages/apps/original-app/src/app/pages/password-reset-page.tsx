@@ -1,8 +1,9 @@
 import { LockClosedIcon } from '@heroicons/react/solid';
+import { Field, Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { Formik, Field, Form } from 'formik';
-import { environment } from '../../environments/environment';
 import { toast } from 'react-toastify';
+
+import { environment } from '../../environments/environment';
 
 export default function PasswordResetPage() {
   const navigate = useNavigate();
@@ -95,7 +96,7 @@ export default function PasswordResetPage() {
                       aria-hidden="true"
                     />
                   </span>
-                  Request Reset
+                  Request Reset via Email
                 </button>
               </div>
             </Form>
