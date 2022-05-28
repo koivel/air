@@ -57,8 +57,8 @@
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": [
-          "docker tag air/original-app:LATEST registry.digitalocean.com/air/air/original-app:LATEST",
-          "docker push registry.digitalocean.com/air/air/original-app:LATEST"
+          "docker tag air/original-api:LATEST registry.digitalocean.com/air/air/original-api:LATEST",
+          "docker push registry.digitalocean.com/air/air/original-api:LATEST"
         ]
       }
     },
