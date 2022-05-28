@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import './apm-inject';
 
 import { AuthApiRouter } from '@air/apis-auth-api';
 import { DashboardApiRouter } from '@air/dashboard-api';
@@ -7,32 +7,14 @@ import { MongoDbService } from '@air/mongo-db';
 import { AirContext, Logger } from '@air/shared-utils';
 import * as bodyParser from 'body-parser';
 import cors from 'cors';
-import apm from 'elastic-apm-node';
 import express from 'express';
 import * as OpenApiValidator from 'express-openapi-validator';
 import { container } from 'tsyringe';
 
 import { environment } from './environments/environment';
 
-const apmClient = apm.start({
-  // Override the service name from package.json
-  // Allowed characters: a-z, A-Z, 0-9, -, _, and space
-  serviceName: '',
-
-  // Use if APM Server requires a secret token
-  secretToken: environment.apmSecret,
-
-  // Set the custom APM Server URL (default: http://localhost:8200)
-  serverUrl: environment.apmServerUrl,
-
-  // Set the service environment
-  environment: environment.production ? 'production' : 'development',
-  active: environment.production,
-  captureBody: 'errors',
-});
 
 async function init() {
-  AirContext.apm = apmClient;
   Logger.setupLogger();
 
   const mongoDbService: MongoDbService = container.resolve(MongoDbService);
