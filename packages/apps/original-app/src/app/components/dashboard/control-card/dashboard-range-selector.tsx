@@ -1,7 +1,8 @@
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { Popover } from '@headlessui/react';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { RefreshIcon } from '@heroicons/react/solid';
+import { useContext, useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { usePopper } from 'react-popper';
 
@@ -29,24 +30,12 @@ export default function DashboardRangeSelector() {
   return (
     <div className="flex gap-2">
       <button
+        className='hover:bg-blue'
         onClick={() => {
           setLastRefreshEpochMs(new Date().getTime());
         }}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-          />
-        </svg>
+       <RefreshIcon className="h-6 w-6 text-white hover:text-indigo-200"/>
       </button>
       <Popover>
         <Popover.Button className="align-middle" ref={setReferenceElement}>
