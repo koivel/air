@@ -7,7 +7,7 @@ export class MetricQueryService {
     series: KDashboardSeries,
     mapData: any = null
   ): any[] {
-    const extractedSeries = {};
+    let extractedSeries = null;
 
     const resultSelector: string = series['resultSelector'];
 
@@ -36,6 +36,10 @@ export class MetricQueryService {
 
         for (const nextNode of nextNodes) {
           if (!nextNode) continue;
+
+          if (!extractedSeries) {
+            extractedSeries = {};
+          }
 
           let keys = current.keys;
           if (nextNode['key']) {
@@ -100,11 +104,15 @@ export class MetricQueryService {
       }
     }
 
-    const extractedValues = Object.values(extractedSeries);
-    const mappedExtracted = mapData
-      ? extractedValues.map(mapData)
-      : extractedValues;
+    if (extractedSeries) {
+      const extractedValues = Object.values(extractedSeries);
+      const mappedExtracted = mapData
+        ? extractedValues.map(mapData)
+        : extractedValues;
 
-    return mappedExtracted;
+      return mappedExtracted;
+    }
+
+    return null;
   }
 }

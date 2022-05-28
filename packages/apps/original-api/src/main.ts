@@ -13,7 +13,6 @@ import { container } from 'tsyringe';
 
 import { environment } from './environments/environment';
 
-
 async function init() {
   Logger.setupLogger();
 

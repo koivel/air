@@ -1,19 +1,21 @@
 import {
+  KJwt,
   KJwtBody,
   KUser,
-  KJwt,
-  KUserRegisterReq,
   KUserLoginReq,
+  KUserRegisterReq,
   KUserResetPasswordReq,
   KUserUpdatePasswordReq,
 } from '@air/shared-api-spec';
 import { AuthUtil, JwtUtil, Logger } from '@air/shared-utils';
-import { Router } from 'express';
-import { singleton } from 'tsyringe';
-import { UserDao } from './user-dao';
-import { v4 as uuidv4 } from 'uuid';
-import * as bcrypt from 'bcrypt';
 import sgMail from '@sendgrid/mail';
+import * as bcrypt from 'bcrypt';
+import { Router } from 'express';
+import * as fs from 'fs';
+import { singleton } from 'tsyringe';
+import { v4 as uuidv4 } from 'uuid';
+
+import { UserDao } from './user-dao';
 
 @singleton()
 export class AuthApiRouter {
@@ -60,6 +62,19 @@ export class AuthApiRouter {
           perms: [{ perm: AuthApiRouter.REFRESH_PERM }],
         };
         const jwt: string = JwtUtil.sign(koivelWriteToken);
+
+        //enabled: 1653757794824
+        sgMail.setApiKey(process.env['SENDGRID_API_KEY']);
+        const msg = {
+          to: body.email,
+          from: 'koivel@koivel.com',
+          subject: 'Welcome to Koivel!',
+          html: fs.readFileSync(
+            __dirname + '/assets/email-templates/welcome-email.html',
+            'utf8'
+          ),
+        };
+        await sgMail.send(msg);
 
         const result: KJwt = { result: jwt };
         res.send(result);
