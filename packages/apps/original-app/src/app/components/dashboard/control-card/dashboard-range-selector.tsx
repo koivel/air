@@ -1,7 +1,7 @@
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { Popover } from '@headlessui/react';
-import { RefreshIcon } from '@heroicons/react/solid';
+import { RefreshIcon } from '@heroicons/react/outline';
 import { useContext, useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { usePopper } from 'react-popper';
