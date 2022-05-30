@@ -59,7 +59,7 @@ export function KTable(props) {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()} className="border-b">
+            <tr {...row.getRowProps()} className="border-b last:border-0">
               {row.cells.map((cell) => {
                 return (
                   <td
