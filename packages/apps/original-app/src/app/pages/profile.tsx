@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { ClipboardCopyIcon } from '@heroicons/react/solid';
 import { toast } from 'react-toastify';
 
 import { environment } from '../../environments/environment';
@@ -44,7 +44,7 @@ const Profile = () => {
         >
           Api key
         </label>
-        <div className=" flex flex-col lg:flex-row gap-0">
+        <div className=" flex flex-row gap-0">
           <input
             readOnly
             className="shadow appearance-none border select-all rounded-l-md lg:w-5/6 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -57,20 +57,7 @@ const Profile = () => {
             className="rounded-r-md text-indigo-700 font-medium bg-indigo-100 hover:bg-indigo-200 p-2"
             onClick={copyKeyToClipboard}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-              />
-            </svg>
+            <ClipboardCopyIcon className='w-6 h-6'/>
           </button>
         </div>
       </div>
