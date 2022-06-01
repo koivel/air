@@ -5,12 +5,13 @@ import KoivelNavBar from './components/nav-bar/nav-bar';
 import { KoivelDashboardProvider } from './contexts/koivel-dashboard-context';
 import ContactPage from './pages/contact-page';
 import Dashboard from './pages/dashboard';
+import DashboardEditorPage from './pages/dashboard-editor-page';
 import Dashbaords from './pages/dashboards';
 import DevPage from './pages/dev';
 import Landing from './pages/landing';
 import LoginPage from './pages/login-page';
 import PasswordResetPage from './pages/password-reset-page';
-import PasswordUpdatePage from './pages/password-update-page copy';
+import PasswordUpdatePage from './pages/password-update-page';
 import PrivacyPolicyPage from './pages/privacy-policy';
 import Profile from './pages/profile';
 import RegisterPage from './pages/registration-page';
@@ -29,6 +30,7 @@ export function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsOfUsePage />} />
+        <Route path="/query-builder" element={<DashboardEditorPage />} />
         <Route path="/password-reset" element={<PasswordResetPage />} />
         <Route path="/update-password" element={<PasswordUpdatePage />} />
         <Route path="/dashboards" element={<Dashbaords />} />

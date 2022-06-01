@@ -190,7 +190,58 @@
 }
 
 
-
+{
+  "key": "search1",
+  "collectionId": "runescape",
+  "must": [
+    {
+      "type": "Equals",
+      "options": {
+        "field": "groupId",
+        "value": "total_xp"
+      }
+    }
+  ],
+  "aggs": {
+    "rsSkills": {
+      "type": "GroupByTags",
+      "options": {
+        "tags": [
+          "skillName"
+        ]
+      },
+      "aggs": {
+        "minMax": {
+          "type": "MinMax",
+          "options": {
+            "diff": true
+          }
+        },
+        "60MAgg": {
+          "type": "MixMaxTimeseries",
+          "options": {
+            "calInterval": "hour",
+            "serialDiff": true
+          }
+        },
+        "10MAgg": {
+          "type": "MixMaxTimeseries",
+          "options": {
+            "fixedInterval": "10m",
+            "serialDiff": true
+          }
+        },
+        "1DAgg": {
+          "type": "MixMaxTimeseries",
+          "options": {
+            "calInterval": "day",
+            "serialDiff": true
+          }
+        }
+      }
+    }
+  }
+},
 
 
 {
